@@ -18,10 +18,11 @@
   },
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --disable-host-check",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
+    "watch": "ng build --watch --configuration development",
     "e2e": "ng e2e"
   },
   "devDependencies": {
