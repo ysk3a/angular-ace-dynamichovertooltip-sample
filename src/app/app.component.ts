@@ -69,14 +69,16 @@ export class AppComponent implements OnInit, AfterViewInit {
       const docPos = e.getDocumentPosition();
 
       hoverNode.innerHTML = 'hello <span style="color: bold; text-weight: bold">world</span>';
-      tooltipRef.setInput('data', 'tooltip ref set input ' + this.counter++);
+      const range: Range = session.getWordRange(docPos.row, docPos.column);
+
+      tooltipRef.setInput('data', 'tooltip ref set input ' + this.counter++ + range.toString());
       tooltipRef.changeDetectorRef.detectChanges();
       // componentRef.instance.data = 'Hello World Data';
       // component.changeDetectorRef.detectChanges();
 
       // this line gets the current word that is being hovered
-      const range = session.getWordRange(docPos.row, docPos.column);
-
+      console.log(editor, range, tooltipRef, e);
+      // docTooltip.showForRange(editor, range, hoverNode, e);
       docTooltip.showForRange(editor, range, tooltipRef.location.nativeElement, e);
     });
 
