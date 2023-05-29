@@ -54,9 +54,9 @@ export class AppComponent implements OnInit, AfterViewInit {
     const hoverNode = document.createElement('div');
 
     this.viewRef.clear();
-    const tooltipRef = this.viewRef.createComponent(CustomTooltipComponent);
-    tooltipRef.setInput('data', 'tooltip ref set input');
-    tooltipRef.changeDetectorRef.detectChanges(); // this is needed everytime setInput is changed?
+    // const tooltipRef = this.viewRef.createComponent(CustomTooltipComponent);
+    // tooltipRef.setInput('data', 'tooltip ref set input');
+    // tooltipRef.changeDetectorRef.detectChanges(); // this is needed everytime setInput is changed?
 
     // tooltipRef.changeDetectorRef.detectChanges();
     // const componentFactory = this.cfr.resolveComponentFactory(CustomTooltipComponent);
@@ -70,15 +70,16 @@ export class AppComponent implements OnInit, AfterViewInit {
 
       hoverNode.innerHTML = 'hello <span style="color: bold; text-weight: bold">world</span>';
       const range: Range = session.getWordRange(docPos.row, docPos.column);
-
+      const tooltipRef = this.viewRef.createComponent(CustomTooltipComponent);
       tooltipRef.setInput('data', 'tooltip ref set input ' + this.counter++ + range.toString());
       tooltipRef.changeDetectorRef.detectChanges();
       // componentRef.instance.data = 'Hello World Data';
       // component.changeDetectorRef.detectChanges();
 
-      // this line gets the current word that is being hovered
-      console.log(editor, range, tooltipRef, e);
+      // console.log(editor, range, tooltipRef, e);
       // docTooltip.showForRange(editor, range, hoverNode, e);
+
+      // this line gets the current word that is being hovered
       docTooltip.showForRange(editor, range, tooltipRef.location.nativeElement, e);
     });
 
