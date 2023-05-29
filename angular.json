@@ -105,5 +105,8 @@
         }
       }
     }},
-  "defaultProject": "ace-angular"
+  "defaultProject": "ace-angular",
+  "cli": {
+    "analytics": false
+  }
 }
